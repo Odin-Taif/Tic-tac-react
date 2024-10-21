@@ -1,18 +1,13 @@
-import { useState } from "react";
-
 type props = {
-  val: number;
+  value?: string;
+  onSquareClick: () => void;
 };
-export function ButtonX({ val }: props) {
-  const [value, setValue] = useState<string | null>(null);
 
-  function handleClick() {
-    setValue("x");
-  }
+export function ButtonX({ value, onSquareClick }: props) {
   return (
     <button
       className="py-6 px-8  m-2 bg-gray-100 text-lg hover:bg-gray-200"
-      onClick={handleClick}
+      onClick={onSquareClick}
     >
       <span>{value}</span>
     </button>
