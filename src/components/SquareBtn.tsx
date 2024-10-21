@@ -3,7 +3,7 @@ type props = {
   onSquareClick: () => void;
 };
 
-export function ButtonX({ value, onSquareClick }: props) {
+export function SquareBtn({ value, onSquareClick }: props) {
   return (
     <button
       className="py-6 px-8 w-24 h-24 m-2 bg-gray-100 text-lg hover:bg-gray-200 focus:outline-none"
