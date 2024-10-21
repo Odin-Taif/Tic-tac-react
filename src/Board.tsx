@@ -1,9 +1,14 @@
 import { ButtonX } from "./components";
 import { calculateWinner } from "./lib/functionalcore";
+type props = {
+  xIsNext: boolean;
+  squares: unknown[];
+  onPlay: (squares: unknown[]) => void;
+  resetGame: () => void;
+};
 
-export default function Board({ xIsNext, squares, onPlay }) {
+export default function Board({ xIsNext, squares, onPlay, resetGame }: props) {
   const winner = calculateWinner(squares);
-
   let status;
   if (winner) {
     status = "Winner: " + winner;
@@ -22,10 +27,6 @@ export default function Board({ xIsNext, squares, onPlay }) {
       nextSquares[i] = "O";
     }
     onPlay(nextSquares);
-  }
-
-  function resetGame() {
-    // setSquares(Array(9).fill(null));
   }
 
   return (
@@ -56,11 +57,8 @@ export default function Board({ xIsNext, squares, onPlay }) {
         <span className="text-xl text-black">
           {winner ? `Winner: ${winner} ` : "No winner yet "}
         </span>
-        <button
-          className="bg-red-400 p-4 hover:bg-red-500"
-          onClick={() => resetGame()}
-        >
-          ResetGame
+        <button className="p-4 bg-red-500" onClick={() => resetGame()}>
+          Reset Game
         </button>
       </div>
     </div>
